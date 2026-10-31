@@ -41,10 +41,26 @@ O **Cantina CESAR** é um app de console (PoC) que responde à pergunta do aluno
 
 
 ## Como rodar (Java 17+)
+**Pré-requisito:** JDK 17 ou mais novo (não precisa de Maven, Gradle nem bibliotecas).
+
+| Sistema | Instalar o JDK |
+|---|---|
+| Windows | `winget install EclipseAdoptium.Temurin.17.JDK` ou instalador em adoptium.net |
+| macOS | `brew install --cask temurin@17` |
+| Linux (Ubuntu/Debian) | `sudo apt install openjdk-17-jdk` |
+
+Confira com `java -version` e `javac -version` (os dois devem mostrar 17 ou mais).
+
+**Baixar o projeto:** `git clone <url-do-repositório>` (ou *Code → Download ZIP* e extrair).
+
+**Rodar** (no terminal, dentro da pasta que contém `src/`):
 ```bash
 javac -encoding UTF-8 -d out src/*.java
 java -Dfile.encoding=UTF-8 -cp out Main
 ```
+- O primeiro comando compila para a pasta `out/`; o segundo executa a classe `Main`.
+- Funciona em CMD, Git Bash, Terminal do macOS, terminais Linux e no terminal do VS Code.
+- No PowerShell, troque `src/*.java` por `(Get-ChildItem src\*.java)`.
 
 ## Onde estão os princípios no código
 
