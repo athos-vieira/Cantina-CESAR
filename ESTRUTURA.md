@@ -1,7 +1,7 @@
 # Estrutura do repositório · Cantina CESAR
 
 Documento de projeto (versão atual): fluxo principal + classes de **itens** e **pagamento**.
-Java 17, sem banco, sem deploy, sem dependências externas. Preços e tempos são **estimativas** (ver `Estimativas.java`).
+Preços e tempos são **estimativas** (ver `Estimativas.java`).
 
 ## 1. Árvore de arquivos
 
@@ -72,20 +72,4 @@ Main
 | `CantinaService` | orquestrar o caso de uso | `Cardapio`, `FilaDePedidos`, `VerificadorDeTempo` |
 | `TelaConsole` | interação com o usuário | `CantinaService`, `Pagamento`, `Item` |
 | `Main` | instanciar e ligar as peças | todas (único lugar que conhece as concretas) |
-
-## 4. Onde cada princípio do Cap. 5 aparece
-
-| Princípio | Onde | Como |
-|---|---|---|
-| **Integridade conceitual** | todos os itens e pagamentos | mesma convenção: interface + classe pequena, mesmos nomes de métodos |
-| **Ocultamento de informação** | `Pedido`, `CartaoCredito`, `ValeRefeicao` | `status` e `saldo`/`limite` são `private`; só mudam por métodos |
-| **Coesão / Responsabilidade Única** | `VerificadorDeTempo`, `FilaDePedidos`, `TelaConsole` | regra, fila e tela em classes separadas |
-| **Acoplamento / Inversão de Dependências** | `Pedido` → `Item`, `Pagamento`; `CantinaService` → `Cardapio` | dependências por interface, injetadas por construtor em `Main` |
-| **Segregação de Interfaces** | `Item`, `Pagamento` | interfaces com 4 e 2 métodos; nenhuma classe implementa o que não usa |
-| **Composição sobre herança** | `CantinaService`, `Pedido` | "tem um" (fila, verificador, pagamento); nenhuma hierarquia de herança de classes |
-| **Demeter** | `Pedido.total()`, `Pedido.tipo()` | falam só com `Item`; ninguém faz `a.getB().getC()` |
-| **Aberto/Fechado** | novo item / novo pagamento | basta criar uma classe e registrá-la em `Main`; `Pedido` não muda |
-| **Liskov** | `Coxinha` ↔ `Tapioca`; `Pix` ↔ `ValeRefeicao` | qualquer implementação funciona no `Pedido` sem surpresa (contratos documentados) |
-
-## 5. Fora do escopo desta versão
-Pedido antecipado de tapioca, banco de dados, deploy, interface gráfica. Pontos de extensão futuros: novo `Item`, novo `Pagamento`, métricas (LCOM/CBO) para o "antes e depois".
+```
