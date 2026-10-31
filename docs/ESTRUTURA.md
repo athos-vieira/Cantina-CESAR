@@ -44,20 +44,6 @@ Cantina-CESAR/
 5. status: PAGO → EM PREPARO → PRONTO
 ```
 
-## Dívidas de projeto (o "antes" da comparação)
-Problemas conhecidos, a corrigir na PoC final:
-
-| Problema | Princípio violado | Correção planejada |
-|---|---|---|
-| `Main` faz tela + regra de tempo + fluxo | Responsabilidade Única, Coesão | separar `TelaConsole`, `VerificadorDeTempo`, `CantinaService` |
-| `Pedido.status` é `String` pública | Ocultamento de informação | `enum StatusPedido` privado, mudando só por métodos |
-| `Pedido.itens` é lista pública | Ocultamento de informação | lista privada, cópia defensiva |
-| Pedidos rápidos e preparados na mesma lógica | (requisito da pesquisa) | `FilaDePedidos` com duas filas |
-| Preços e tempos espalhados em cada item | Ocultamento de informação | classe `Estimativas` única |
-| `tipo()` é `String` | tipagem fraca | `enum TipoItem` |
-| `double` para dinheiro | erro de arredondamento | `BigDecimal` |
-| `Main` conhece todas as classes concretas e monta as listas à mão | Acoplamento | montar tudo em um só lugar (composition root) e injetar |
-
 ## Prova de Aberto/Fechado 
 Para adicionar um novo meio de pagamento, como Dinheiro:
 1. Criar `Dinheiro.java` implementando `Pagamento`.
