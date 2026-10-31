@@ -38,7 +38,6 @@ Esta é a versão **go-horse**: alguns princípios já aparecem,
 | Aberto/Fechado | `Pix`, `CartaoCredito`, `ValeRefeicao`, `Coxinha`, `Tapioca`...: novo item ou pagamento = classe nova, sem mexer nas outras | ✅ (o `Main` ainda registra à mão) |
 | Segregação de Interfaces | `Item` (4 métodos) e `Pagamento` (2 métodos) são pequenas | ✅ |
 | Ocultamento de informação | `limite` e `saldo` privados em `CartaoCredito` e `ValeRefeicao` | ⚠️ parcial: `Pedido.status` e `Pedido.itens` são públicos |
-| Responsabilidade Única / Coesão | `Main.java` mistura tela, regra de tempo e fluxo | ❌ a corrigir |
 | Integridade conceitual | itens seguem o mesmo padrão; pagamentos também | ✅ parcial |
 
-Estrutura de arquivos e plano de refatoração: [`docs/ESTRUTURA.md`](docs/ESTRUTURA.md).
+
